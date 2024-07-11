@@ -131,6 +131,27 @@
 
     {
       run: () => {
+        const selector = `[*|aria-activedescendant]`;
+        const activedescendantElements = document.querySelectorAll(selector)
+        const failingElements = []
+        activedescendantElements.forEach(element => {
+          const associatedElements = document.querySelectorAll(`#${element.getAttribute('aria-activedescendant')}`)
+          if (associatedElements.length !== 1) {
+            failingElements.push(element)
+          }
+        })
+        return {
+          title: `Ensure the aria-activedescendant attribute has a corresponding ID.`,
+          message: `found ${failingElements.length} failing labels`,
+          state: failingElements.length === 0,
+          elements: failingElements,
+          selector,
+        };
+      },
+    },
+
+    {
+      run: () => {
         const selector = 'img:not([alt]):not([role="presentation"])';
         return {
           title: `Images should have an alt attribute or role presentation `,
