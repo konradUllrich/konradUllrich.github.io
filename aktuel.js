@@ -74,10 +74,6 @@ var customAccessible = false;
       .attr("role", "presentation")
       .removeAttr("aria-label");
 
-
-
-
-
     /**
     * All <li> elements within a <ul> element, which in turn are located within an element with the class.ListCrtl, are removed from the role and the title and the aria label are set to the text content of the list element. 
     * The first element is hidden with aria-hidden=true
@@ -101,7 +97,6 @@ var customAccessible = false;
           $(element).attr("aria-label", "Ausgewaehlte Benutzer");
         }
       });
-
 
 
     $('[aria-haspopup="dialog"]').each((index, element) => {
