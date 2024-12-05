@@ -197,10 +197,22 @@
           elements: document.querySelectorAll(selector),
           selector,
         };
-      }
+      },
     },
 
-
+    {
+      run: () => {
+        const selector = 'hr:not([role="presentation"])';
+        return {
+          title: `<hr> tag will be read by screen readers if the don't have role="presentation".`,
+          message: `found ${document.querySelectorAll(selector).length}`,
+          state: document.querySelectorAll(selector).length === 0,
+          elements: document.querySelectorAll(selector),
+          selector,
+        };
+      },
+      
+    },
   ];
 
   let errorCount = 0
